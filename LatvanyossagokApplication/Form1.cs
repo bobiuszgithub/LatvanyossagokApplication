@@ -1,6 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Data.SqlTypes;
 using System.Windows.Forms;
 namespace LatvanyossagokApplication
 {
@@ -23,6 +21,44 @@ namespace LatvanyossagokApplication
                 }
 
             };
+            letrehoz();
         }
+
+
+        void letrehoz()
+        {
+
+            var createvarosokComm = conn.CreateCommand();
+
+            createvarosokComm.CommandText = @"
+CREATE TABLE IF NOT EXISTS latvanyossagokdb.varosok(
+             id INT(10) NOT NULL AUTO_INCREMENT,
+             nev TEXT NOT NULL,
+             lakossag INT(10) NOT NULL,
+             PRIMARY KEY(`id`)
+);
+";
+            createvarosokComm.ExecuteNonQuery();
+
+            var createlatvanyossagokComm = conn.CreateCommand();
+
+            createlatvanyossagokComm.CommandText = @"
+CREATE TABLE IF NOT EXISTS latvanyossagokdb.latvanyossagok (
+              id INT(10) NOT NULL AUTO_INCREMENT,
+              nev TEXT NOT NULL,
+              leiras TEXT NOT NULL,
+              ar INT(10) NOT NULL,
+              varos_id INT(10) NOT NULL,
+              PRIMARY KEY (id),
+              FOREIGN KEY (varos_id) REFERENCES varosok(id)
+);
+";
+            createlatvanyossagokComm.ExecuteNonQuery();
+
+
+        }
+
+
+
     }
 }
