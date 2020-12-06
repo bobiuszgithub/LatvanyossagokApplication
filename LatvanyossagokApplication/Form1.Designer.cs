@@ -33,8 +33,8 @@ namespace LatvanyossagokApplication
             this.numeric_lakossag = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btn_add = new System.Windows.Forms.Button();
-            this.lbox = new System.Windows.Forms.ListBox();
+            this.btn_addvaros = new System.Windows.Forms.Button();
+            this.lbox_varosok = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_lnev = new System.Windows.Forms.TextBox();
             this.cbox_varos = new System.Windows.Forms.ComboBox();
@@ -44,8 +44,10 @@ namespace LatvanyossagokApplication
             this.btn_latvanyossag = new System.Windows.Forms.Button();
             this.txt_leiras = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.lbox_latvanyossagok = new System.Windows.Forms.ListBox();
+            this.lbox_varos_latvanyossagok = new System.Windows.Forms.ListBox();
+            this.btn_varos_edit = new System.Windows.Forms.Button();
+            this.btn_varos_delete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_lakossag)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_ar)).BeginInit();
             this.SuspendLayout();
@@ -82,23 +84,24 @@ namespace LatvanyossagokApplication
             this.label3.TabIndex = 5;
             this.label3.Text = "lakossag:";
             // 
-            // btn_add
+            // btn_addvaros
             // 
-            this.btn_add.Location = new System.Drawing.Point(70, 64);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(120, 23);
-            this.btn_add.TabIndex = 6;
-            this.btn_add.Text = "város felvétele";
-            this.btn_add.UseVisualStyleBackColor = true;
-            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
+            this.btn_addvaros.Location = new System.Drawing.Point(70, 64);
+            this.btn_addvaros.Name = "btn_addvaros";
+            this.btn_addvaros.Size = new System.Drawing.Size(120, 23);
+            this.btn_addvaros.TabIndex = 6;
+            this.btn_addvaros.Text = "város felvétele";
+            this.btn_addvaros.UseVisualStyleBackColor = true;
+            this.btn_addvaros.Click += new System.EventHandler(this.btn_add_Click);
             // 
-            // lbox
+            // lbox_varosok
             // 
-            this.lbox.FormattingEnabled = true;
-            this.lbox.Location = new System.Drawing.Point(211, 12);
-            this.lbox.Name = "lbox";
-            this.lbox.Size = new System.Drawing.Size(231, 121);
-            this.lbox.TabIndex = 7;
+            this.lbox_varosok.FormattingEnabled = true;
+            this.lbox_varosok.Location = new System.Drawing.Point(211, 12);
+            this.lbox_varosok.Name = "lbox_varosok";
+            this.lbox_varosok.Size = new System.Drawing.Size(231, 121);
+            this.lbox_varosok.TabIndex = 7;
+            this.lbox_varosok.SelectedIndexChanged += new System.EventHandler(this.lbox_varosok_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -175,29 +178,50 @@ namespace LatvanyossagokApplication
             this.label6.TabIndex = 16;
             this.label6.Text = "leírás:";
             // 
-            // listBox1
+            // lbox_latvanyossagok
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(403, 273);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(231, 160);
-            this.listBox1.TabIndex = 17;
+            this.lbox_latvanyossagok.FormattingEnabled = true;
+            this.lbox_latvanyossagok.Location = new System.Drawing.Point(403, 273);
+            this.lbox_latvanyossagok.Name = "lbox_latvanyossagok";
+            this.lbox_latvanyossagok.Size = new System.Drawing.Size(231, 160);
+            this.lbox_latvanyossagok.TabIndex = 17;
             // 
-            // listBox2
+            // lbox_varos_latvanyossagok
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(508, 12);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(231, 121);
-            this.listBox2.TabIndex = 18;
+            this.lbox_varos_latvanyossagok.FormattingEnabled = true;
+            this.lbox_varos_latvanyossagok.Location = new System.Drawing.Point(469, 12);
+            this.lbox_varos_latvanyossagok.Name = "lbox_varos_latvanyossagok";
+            this.lbox_varos_latvanyossagok.Size = new System.Drawing.Size(231, 121);
+            this.lbox_varos_latvanyossagok.TabIndex = 18;
+            // 
+            // btn_varos_edit
+            // 
+            this.btn_varos_edit.Location = new System.Drawing.Point(70, 122);
+            this.btn_varos_edit.Name = "btn_varos_edit";
+            this.btn_varos_edit.Size = new System.Drawing.Size(120, 23);
+            this.btn_varos_edit.TabIndex = 19;
+            this.btn_varos_edit.Text = "város módosítása";
+            this.btn_varos_edit.UseVisualStyleBackColor = true;
+            this.btn_varos_edit.Click += new System.EventHandler(this.btn_varos_edit_Click);
+            // 
+            // btn_varos_delete
+            // 
+            this.btn_varos_delete.Location = new System.Drawing.Point(70, 93);
+            this.btn_varos_delete.Name = "btn_varos_delete";
+            this.btn_varos_delete.Size = new System.Drawing.Size(120, 23);
+            this.btn_varos_delete.TabIndex = 20;
+            this.btn_varos_delete.Text = "város törlése";
+            this.btn_varos_delete.UseVisualStyleBackColor = true;
             // 
             // LatvanyossagokApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.btn_varos_delete);
+            this.Controls.Add(this.btn_varos_edit);
+            this.Controls.Add(this.lbox_varos_latvanyossagok);
+            this.Controls.Add(this.lbox_latvanyossagok);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txt_leiras);
             this.Controls.Add(this.btn_latvanyossag);
@@ -207,8 +231,8 @@ namespace LatvanyossagokApplication
             this.Controls.Add(this.cbox_varos);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_lnev);
-            this.Controls.Add(this.lbox);
-            this.Controls.Add(this.btn_add);
+            this.Controls.Add(this.lbox_varosok);
+            this.Controls.Add(this.btn_addvaros);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.numeric_lakossag);
@@ -228,8 +252,8 @@ namespace LatvanyossagokApplication
         private System.Windows.Forms.NumericUpDown numeric_lakossag;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btn_add;
-        private System.Windows.Forms.ListBox lbox;
+        private System.Windows.Forms.Button btn_addvaros;
+        private System.Windows.Forms.ListBox lbox_varosok;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_lnev;
         private System.Windows.Forms.ComboBox cbox_varos;
@@ -239,8 +263,10 @@ namespace LatvanyossagokApplication
         private System.Windows.Forms.Button btn_latvanyossag;
         private System.Windows.Forms.TextBox txt_leiras;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox lbox_latvanyossagok;
+        private System.Windows.Forms.ListBox lbox_varos_latvanyossagok;
+        private System.Windows.Forms.Button btn_varos_edit;
+        private System.Windows.Forms.Button btn_varos_delete;
     }
 }
 
