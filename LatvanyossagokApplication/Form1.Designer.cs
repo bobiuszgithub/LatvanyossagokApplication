@@ -44,12 +44,14 @@ namespace LatvanyossagokApplication
             this.btn_latvanyossag = new System.Windows.Forms.Button();
             this.txt_leiras = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.lbox_latvanyossagok = new System.Windows.Forms.ListBox();
             this.lbox_varos_latvanyossagok = new System.Windows.Forms.ListBox();
             this.btn_varos_edit = new System.Windows.Forms.Button();
             this.btn_varos_delete = new System.Windows.Forms.Button();
+            this.teszt = new System.Windows.Forms.Label();
+            this.nup_test = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_lakossag)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_ar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nup_test)).BeginInit();
             this.SuspendLayout();
             // 
             // text_nev
@@ -106,7 +108,7 @@ namespace LatvanyossagokApplication
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 277);
+            this.label1.Location = new System.Drawing.Point(12, 194);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 13);
             this.label1.TabIndex = 9;
@@ -114,7 +116,7 @@ namespace LatvanyossagokApplication
             // 
             // txt_lnev
             // 
-            this.txt_lnev.Location = new System.Drawing.Point(111, 274);
+            this.txt_lnev.Location = new System.Drawing.Point(111, 191);
             this.txt_lnev.Name = "txt_lnev";
             this.txt_lnev.Size = new System.Drawing.Size(120, 20);
             this.txt_lnev.TabIndex = 8;
@@ -122,7 +124,7 @@ namespace LatvanyossagokApplication
             // cbox_varos
             // 
             this.cbox_varos.FormattingEnabled = true;
-            this.cbox_varos.Location = new System.Drawing.Point(110, 355);
+            this.cbox_varos.Location = new System.Drawing.Point(110, 272);
             this.cbox_varos.Name = "cbox_varos";
             this.cbox_varos.Size = new System.Drawing.Size(121, 21);
             this.cbox_varos.TabIndex = 10;
@@ -130,7 +132,7 @@ namespace LatvanyossagokApplication
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 355);
+            this.label4.Location = new System.Drawing.Point(12, 272);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 11;
@@ -138,7 +140,7 @@ namespace LatvanyossagokApplication
             // 
             // nud_ar
             // 
-            this.nud_ar.Location = new System.Drawing.Point(111, 329);
+            this.nud_ar.Location = new System.Drawing.Point(111, 246);
             this.nud_ar.Name = "nud_ar";
             this.nud_ar.Size = new System.Drawing.Size(120, 20);
             this.nud_ar.TabIndex = 12;
@@ -146,7 +148,7 @@ namespace LatvanyossagokApplication
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 331);
+            this.label5.Location = new System.Drawing.Point(12, 248);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(19, 13);
             this.label5.TabIndex = 13;
@@ -154,7 +156,7 @@ namespace LatvanyossagokApplication
             // 
             // btn_latvanyossag
             // 
-            this.btn_latvanyossag.Location = new System.Drawing.Point(111, 382);
+            this.btn_latvanyossag.Location = new System.Drawing.Point(111, 299);
             this.btn_latvanyossag.Name = "btn_latvanyossag";
             this.btn_latvanyossag.Size = new System.Drawing.Size(120, 23);
             this.btn_latvanyossag.TabIndex = 14;
@@ -164,7 +166,7 @@ namespace LatvanyossagokApplication
             // 
             // txt_leiras
             // 
-            this.txt_leiras.Location = new System.Drawing.Point(111, 303);
+            this.txt_leiras.Location = new System.Drawing.Point(111, 220);
             this.txt_leiras.Name = "txt_leiras";
             this.txt_leiras.Size = new System.Drawing.Size(249, 20);
             this.txt_leiras.TabIndex = 15;
@@ -172,19 +174,11 @@ namespace LatvanyossagokApplication
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 306);
+            this.label6.Location = new System.Drawing.Point(12, 223);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(36, 13);
             this.label6.TabIndex = 16;
             this.label6.Text = "leírás:";
-            // 
-            // lbox_latvanyossagok
-            // 
-            this.lbox_latvanyossagok.FormattingEnabled = true;
-            this.lbox_latvanyossagok.Location = new System.Drawing.Point(403, 273);
-            this.lbox_latvanyossagok.Name = "lbox_latvanyossagok";
-            this.lbox_latvanyossagok.Size = new System.Drawing.Size(231, 160);
-            this.lbox_latvanyossagok.TabIndex = 17;
             // 
             // lbox_varos_latvanyossagok
             // 
@@ -213,15 +207,37 @@ namespace LatvanyossagokApplication
             this.btn_varos_delete.Text = "város törlése";
             this.btn_varos_delete.UseVisualStyleBackColor = true;
             // 
+            // teszt
+            // 
+            this.teszt.AutoSize = true;
+            this.teszt.Location = new System.Drawing.Point(522, 153);
+            this.teszt.Name = "teszt";
+            this.teszt.Size = new System.Drawing.Size(29, 13);
+            this.teszt.TabIndex = 22;
+            this.teszt.Text = "teszt";
+            // 
+            // nup_test
+            // 
+            this.nup_test.Location = new System.Drawing.Point(557, 151);
+            this.nup_test.Name = "nup_test";
+            this.nup_test.Size = new System.Drawing.Size(120, 20);
+            this.nup_test.TabIndex = 23;
+            this.nup_test.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // LatvanyossagokApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.nup_test);
+            this.Controls.Add(this.teszt);
             this.Controls.Add(this.btn_varos_delete);
             this.Controls.Add(this.btn_varos_edit);
             this.Controls.Add(this.lbox_varos_latvanyossagok);
-            this.Controls.Add(this.lbox_latvanyossagok);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txt_leiras);
             this.Controls.Add(this.btn_latvanyossag);
@@ -241,6 +257,7 @@ namespace LatvanyossagokApplication
             this.Text = "LatvanyossagokApplication";
             ((System.ComponentModel.ISupportInitialize)(this.numeric_lakossag)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_ar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nup_test)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,10 +280,11 @@ namespace LatvanyossagokApplication
         private System.Windows.Forms.Button btn_latvanyossag;
         private System.Windows.Forms.TextBox txt_leiras;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ListBox lbox_latvanyossagok;
         private System.Windows.Forms.ListBox lbox_varos_latvanyossagok;
         private System.Windows.Forms.Button btn_varos_edit;
         private System.Windows.Forms.Button btn_varos_delete;
+        private System.Windows.Forms.Label teszt;
+        private System.Windows.Forms.NumericUpDown nup_test;
     }
 }
 
