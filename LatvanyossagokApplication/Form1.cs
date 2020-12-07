@@ -225,7 +225,7 @@ VALUES (@id, @nev, @lakossag);
             int ar = Convert.ToInt32(nud_ar.Value);
 
 
-            int varos_id = Convert.ToInt32(cbox_varos.SelectedIndex)+1;
+            int varos_id = Convert.ToInt32(cbox_varos.SelectedIndex) + 1;
 
             var latvanyossag = new Latvanyossagok(id, nev, leiras, ar, varos_id);
 
@@ -308,14 +308,14 @@ UPDATE varosok SET nev = @nev, lakossag = @lakossag WHERE varosok.id = @id;
             }
             else
             {
-                nup_test.Value = v.Id;
+                //nup_test.Value = v.Id;
                 text_nev.Text = v.Nev;
                 numeric_lakossag.Value = v.Lakossag;
             }
 
             //nup_test.Value = lbox_varosok.SelectedIndex+1;
 
-            
+
 
 
             string sql = @"
@@ -324,7 +324,7 @@ FROM `latvanyossagok`
 WHERE varos_id = @kivalasztott_varosid";
 
 
-            int vid = lbox_varosok.SelectedIndex+1;
+            int vid = lbox_varosok.SelectedIndex + 1;
             var comm = this.conn.CreateCommand();
             comm.CommandText = sql;
             comm.Parameters.AddWithValue("@kivalasztott_varosid", vid);
@@ -347,32 +347,90 @@ WHERE varos_id = @kivalasztott_varosid";
                     lbox_varos_latvanyossagok.Items.Add(latvany);
 
 
-                    
+
                 }
             }
 
         }
 
-        private void btn_varos_delete_Click(object sender, EventArgs e)
+        private int latvanyossagfeltoltes()
         {
-          
-            var deleteComm = conn.CreateCommand();
-            deleteComm.CommandText = @"
-DELETE FROM `varosok` WHERE varosok.id = @id;
-";
-            var foreigncheckonComm = conn.CreateCommand();
-
-            foreigncheckonComm.CommandText = @"SET FOREIGN_KEY_CHECKS=0;";
-            foreigncheckonComm.ExecuteNonQuery();
 
             Varosok v = (Varosok)lbox_varosok.SelectedItem;
-            int id = v.Id;
-            deleteComm.Parameters.AddWithValue("@id", id);
-            int erintettSorok = deleteComm.ExecuteNonQuery();
-            lbox_varosok.Items.RemoveAt(lbox_varosok.SelectedIndex);
+            if (lbox_varosok.SelectedItem == null)
+            {
+                nup_test.Value = 0;
+                text_nev.Text = " ";
+                numeric_lakossag.Value = 0;
+            }
+            else
+            {
+                //nup_test.Value = v.Id;
+                text_nev.Text = v.Nev;
+                numeric_lakossag.Value = v.Lakossag;
+            }
 
-            var foreigncheckoffComm = @"SET FOREIGN_KEY_CHECKS=0;";
-            foreigncheckonComm.ExecuteNonQuery();
+            string sql = @"
+SELECT `id`, `nev`, `leiras`, `ar`, `varos_id` 
+FROM `latvanyossagok` 
+WHERE varos_id = @kivalasztott_varosid";
+
+
+            int vid = lbox_varosok.SelectedIndex + 1;
+            var comm = this.conn.CreateCommand();
+            comm.CommandText = sql;
+            comm.Parameters.AddWithValue("@kivalasztott_varosid", vid);
+            using (var reader = comm.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32("id");
+                    string nev = reader.GetString("nev");
+                    string leiras = reader.GetString("leiras");
+                    int ar = reader.GetInt32("ar");
+                    int varos_id = reader.GetInt32("varos_id");
+                    v.Latvanyossagok.Add(new Latvanyossagok(id, nev, leiras, ar, varos_id));
+                   
+
+
+
+                }
+            }
+            return v.Latvanyossagok.Count;
+        }
+
+       
+
+        private void btn_varos_delete_Click(object sender, EventArgs e)
+        {
+            int latvanyossagdb = latvanyossagfeltoltes();
+
+            if (latvanyossagdb == 0)
+            {
+                var deleteComm = conn.CreateCommand();
+                deleteComm.CommandText = @"
+DELETE FROM `varosok` WHERE varosok.id = @id;
+";
+                var foreigncheckonComm = conn.CreateCommand();
+
+                foreigncheckonComm.CommandText = @"SET FOREIGN_KEY_CHECKS=0;";
+                foreigncheckonComm.ExecuteNonQuery();
+
+                Varosok v = (Varosok)lbox_varosok.SelectedItem;
+                int id = v.Id;
+                deleteComm.Parameters.AddWithValue("@id", id);
+                int erintettSorok = deleteComm.ExecuteNonQuery();
+                lbox_varosok.Items.RemoveAt(lbox_varosok.SelectedIndex);
+
+                var foreigncheckoffComm = @"SET FOREIGN_KEY_CHECKS=0;";
+                foreigncheckonComm.ExecuteNonQuery();
+            }
+            else
+            {
+
+                MessageBox.Show("Ennek a városnak van látványossága nem lehet törölni!");
+            }
+            
         }
     }
 }
