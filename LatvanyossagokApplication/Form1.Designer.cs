@@ -47,13 +47,10 @@ namespace LatvanyossagokApplication
             this.lbox_varos_latvanyossagok = new System.Windows.Forms.ListBox();
             this.btn_varos_edit = new System.Windows.Forms.Button();
             this.btn_varos_delete = new System.Windows.Forms.Button();
-            this.teszt = new System.Windows.Forms.Label();
-            this.nup_test = new System.Windows.Forms.NumericUpDown();
             this.btn_latvany_delete = new System.Windows.Forms.Button();
             this.btn_latvany_edit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numeric_lakossag)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_ar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nup_test)).BeginInit();
             this.SuspendLayout();
             // 
             // text_nev
@@ -75,9 +72,9 @@ namespace LatvanyossagokApplication
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 13);
+            this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "nev:";
+            this.label2.Text = "város név:";
             // 
             // label3
             // 
@@ -86,7 +83,7 @@ namespace LatvanyossagokApplication
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 5;
-            this.label3.Text = "lakossag:";
+            this.label3.Text = "lakosság:";
             // 
             // btn_addvaros
             // 
@@ -213,27 +210,6 @@ namespace LatvanyossagokApplication
             this.btn_varos_delete.Visible = false;
             this.btn_varos_delete.Click += new System.EventHandler(this.btn_varos_delete_Click);
             // 
-            // teszt
-            // 
-            this.teszt.AutoSize = true;
-            this.teszt.Location = new System.Drawing.Point(522, 153);
-            this.teszt.Name = "teszt";
-            this.teszt.Size = new System.Drawing.Size(29, 13);
-            this.teszt.TabIndex = 22;
-            this.teszt.Text = "teszt";
-            // 
-            // nup_test
-            // 
-            this.nup_test.Location = new System.Drawing.Point(557, 151);
-            this.nup_test.Name = "nup_test";
-            this.nup_test.Size = new System.Drawing.Size(120, 20);
-            this.nup_test.TabIndex = 23;
-            this.nup_test.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // btn_latvany_delete
             // 
             this.btn_latvany_delete.Location = new System.Drawing.Point(110, 328);
@@ -263,8 +239,6 @@ namespace LatvanyossagokApplication
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btn_latvany_delete);
             this.Controls.Add(this.btn_latvany_edit);
-            this.Controls.Add(this.nup_test);
-            this.Controls.Add(this.teszt);
             this.Controls.Add(this.btn_varos_delete);
             this.Controls.Add(this.btn_varos_edit);
             this.Controls.Add(this.lbox_varos_latvanyossagok);
@@ -287,7 +261,6 @@ namespace LatvanyossagokApplication
             this.Text = "LatvanyossagokApplication";
             ((System.ComponentModel.ISupportInitialize)(this.numeric_lakossag)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_ar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nup_test)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,8 +286,6 @@ namespace LatvanyossagokApplication
         private System.Windows.Forms.ListBox lbox_varos_latvanyossagok;
         private System.Windows.Forms.Button btn_varos_edit;
         private System.Windows.Forms.Button btn_varos_delete;
-        private System.Windows.Forms.Label teszt;
-        private System.Windows.Forms.NumericUpDown nup_test;
         private System.Windows.Forms.Button btn_latvany_delete;
         private System.Windows.Forms.Button btn_latvany_edit;
     }

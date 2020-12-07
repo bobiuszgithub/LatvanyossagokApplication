@@ -324,7 +324,6 @@ UPDATE varosok SET nev = @nev, lakossag = @lakossag WHERE varosok.id = @id;
             Varosok v = (Varosok)lbox_varosok.SelectedItem;
             if (lbox_varosok.SelectedItem == null)
             {
-                nup_test.Value = 0;
                 text_nev.Text = " ";
                 numeric_lakossag.Value = 0;
             }
@@ -413,7 +412,6 @@ WHERE varos_id = @kivalasztott_varosid";
             Varosok v = (Varosok)lbox_varosok.SelectedItem;
             if (lbox_varosok.SelectedItem == null)
             {
-                nup_test.Value = 0;
                 text_nev.Text = " ";
                 numeric_lakossag.Value = 0;
             }
