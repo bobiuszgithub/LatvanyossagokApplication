@@ -220,13 +220,12 @@ VALUES (@id, @nev, @lakossag);
                 id = l.Id;
                 id++;
             }
-
             string nev = txt_lnev.Text;
             string leiras = txt_leiras.Text;
             int ar = Convert.ToInt32(nud_ar.Value);
 
 
-            int varos_id = Convert.ToInt32(cbox_varos.SelectedIndex);
+            int varos_id = Convert.ToInt32(cbox_varos.SelectedIndex)+1;
 
             var latvanyossag = new Latvanyossagok(id, nev, leiras, ar, varos_id);
 
@@ -246,7 +245,7 @@ VALUES (@id, @nev, @lakossag);
             {
                 MessageBox.Show("Az ár nem lehet  nulla");
             }
-            if (varos_id == 0)
+            if (varos_id == -1)
             {
                 MessageBox.Show("A város id-t ki kell választani!");
             }
@@ -271,6 +270,7 @@ VALUES(@id, @nev, @leiras, @ar, @varos_id);
 
             }
 
+            lbox_varos_latvanyossagok.Items.Clear();
 
         }
 
@@ -302,16 +302,20 @@ UPDATE varosok SET nev = @nev, lakossag = @lakossag WHERE varosok.id = @id;
             Varosok v = (Varosok)lbox_varosok.SelectedItem;
             if (lbox_varosok.SelectedItem == null)
             {
+                nup_test.Value = 0;
                 text_nev.Text = " ";
                 numeric_lakossag.Value = 0;
             }
             else
             {
+                nup_test.Value = v.Id;
                 text_nev.Text = v.Nev;
                 numeric_lakossag.Value = v.Lakossag;
             }
 
+            //nup_test.Value = lbox_varosok.SelectedIndex+1;
 
+            
 
 
             string sql = @"
@@ -320,7 +324,7 @@ FROM `latvanyossagok`
 WHERE varos_id = @kivalasztott_varosid";
 
 
-            int vid = v.Id;
+            int vid = lbox_varosok.SelectedIndex+1;
             var comm = this.conn.CreateCommand();
             comm.CommandText = sql;
             comm.Parameters.AddWithValue("@kivalasztott_varosid", vid);
@@ -334,17 +338,41 @@ WHERE varos_id = @kivalasztott_varosid";
                     int ar = reader.GetInt32("ar");
                     int varos_id = reader.GetInt32("varos_id");
 
-                    
+                    if (ar == 0)
+                    {
+
+                    }
                     v.Latvanyossagok.Add(new Latvanyossagok(id, nev, leiras, ar, varos_id));
                     var latvany = new Latvanyossagok(id, nev, leiras, ar, varos_id);
                     lbox_varos_latvanyossagok.Items.Add(latvany);
 
 
-
+                    
                 }
             }
-            nup_test.Value = vid;
 
+        }
+
+        private void btn_varos_delete_Click(object sender, EventArgs e)
+        {
+          
+            var deleteComm = conn.CreateCommand();
+            deleteComm.CommandText = @"
+DELETE FROM `varosok` WHERE varosok.id = @id;
+";
+            var foreigncheckonComm = conn.CreateCommand();
+
+            foreigncheckonComm.CommandText = @"SET FOREIGN_KEY_CHECKS=0;";
+            foreigncheckonComm.ExecuteNonQuery();
+
+            Varosok v = (Varosok)lbox_varosok.SelectedItem;
+            int id = v.Id;
+            deleteComm.Parameters.AddWithValue("@id", id);
+            int erintettSorok = deleteComm.ExecuteNonQuery();
+            lbox_varosok.Items.RemoveAt(lbox_varosok.SelectedIndex);
+
+            var foreigncheckoffComm = @"SET FOREIGN_KEY_CHECKS=0;";
+            foreigncheckonComm.ExecuteNonQuery();
         }
     }
 }

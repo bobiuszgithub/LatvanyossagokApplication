@@ -206,6 +206,7 @@ namespace LatvanyossagokApplication
             this.btn_varos_delete.TabIndex = 20;
             this.btn_varos_delete.Text = "város törlése";
             this.btn_varos_delete.UseVisualStyleBackColor = true;
+            this.btn_varos_delete.Click += new System.EventHandler(this.btn_varos_delete_Click);
             // 
             // teszt
             // 
